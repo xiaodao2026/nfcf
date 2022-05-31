@@ -98,7 +98,7 @@ if  [ "${this_name: -8}" != "_exec.sh" ] ; then
             else
                 crontab -l |grep -v "DEAL_WORK_GREP_TAG" > conf_tmp && crontab conf_tmp && rm -f conf_tmp
             fi
-            echo "文件已删除，请手工核查!"
+            echo "文件卸载完成!"
         else
             echo "未能找到${shell_name}_exec.sh文件，请核查！"
         fi
