@@ -83,7 +83,7 @@ if  [ "${this_name: -8}" != "_exec.sh" ] ; then
 			if [  `crontab -l |grep "DEAL_WORK_GREP_TAG" | grep exec.sh |wc -l` -gt 0 ] ; then
 			    echo "已经有此crontab,请手工去确认crontab情况，不再自动添加！"
 			else
-                crontab -l > conf_tmp && echo "*/10 * * * * sh ${exec_path}/${shell_name}_exec.sh >> ${exec_path}/${shell_name}_exec.log #DEAL_WORK_GREP_TAG" >> conf_tmp && crontab conf_tmp && rm -f conf_tmp
+                crontab -l > conf_tmp && echo "*/20 * * * * sh ${exec_path}/${shell_name}_exec.sh >> ${exec_path}/${shell_name}_exec.log #DEAL_WORK_GREP_TAG" >> conf_tmp && crontab conf_tmp && rm -f conf_tmp
             fi
 		fi
 		echo "全部配置完毕！可以通过tail -f /root/bin/${shell_name}_exec.log查看执行日志"
