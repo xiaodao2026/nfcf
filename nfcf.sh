@@ -1,10 +1,5 @@
 #!/bin/bash
 export LANG=zh_CN.UTF-8
-clear
-echo "Netflix自动域名切换"
-echo "YouTube频道：小道笔记"
-echo "https://www.youtube.com/channel/UCfSvDIQ8D_Zz62oAd5mcDDg"
-echo "--------------------------------"
 
 #首页界面
 #1、安装
@@ -24,6 +19,12 @@ this_name=`basename $0` #获取当前脚本名称(必须为.sh后缀)
 #根据脚本名字后8位判断是安装模式，还是执行模式
 if  [ "${this_name: -8}" != "_exec.sh" ] ; then
     #安装模式
+    clear
+    echo "Netflix自动域名切换"
+    echo "YouTube频道：小道笔记"
+    echo "https://www.youtube.com/channel/UCfSvDIQ8D_Zz62oAd5mcDDg"
+    echo "--------------------------------"
+
     read -p "请选择执行模式(1 安装；2 卸载)：" mode
     if [ "${mode}" = '1' ] ; then
         #判断有没有${shell_name}_exec.sh 这个脚本(安装后实际执行的脚本名)
@@ -44,8 +45,8 @@ if  [ "${this_name: -8}" != "_exec.sh" ] ; then
         read -p "输入你需要的完整的DDNS解析域名（record_name）:" record_name
         record_name=`trim ${record_name}`
         #read -p "输入A或AAAA及ipv4或ipv6解析（record_type）:"  record_type
-        record_type=`A`
-		read -p "输入Netflix解锁优先级（110-140之间，数值越小运行的优先级越高，如主用机器配110，后备机配120）:" vps_flag
+        record_type="A"
+	read -p "输入Netflix解锁优先级（110-140之间，数值越小运行的优先级越高，如主用机器配110，后备机配120）:" vps_flag
         vps_flag=`trim ${vps_flag}`
 
         echo "请确认你输入的参数"
@@ -54,7 +55,7 @@ if  [ "${this_name: -8}" != "_exec.sh" ] ; then
         echo "zone_name:${zone_name}"
         echo "record_name:${record_name}"
         echo "record_type:${record_type}"
-		echo "record_type:${vps_flag}"
+	echo "vps_flag:${vps_flag}"
         read -p "是否继续(y/n)?" ctn
         if [ "${ctn}" != 'y' ] ; then 
             exit
