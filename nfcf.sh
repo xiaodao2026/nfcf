@@ -86,7 +86,7 @@ if  [ "${this_name: -8}" != "_exec.sh" ] ; then
                 crontab -l > conf_tmp && echo "*/10 * * * * sh ${exec_path}/${shell_name}_exec.sh >> ${exec_path}/${shell_name}_exec.log #DEAL_WORK_GREP_TAG" >> conf_tmp && crontab conf_tmp && rm -f conf_tmp
             fi
 		fi
-		echo "全部配置完毕！可以通过tail -f /root/bin/deal_work_exec.log查看执行日志"
+		echo "全部配置完毕！可以通过tail -f /root/bin/${shell_name}_exec.log查看执行日志"
     elif [ "${mode}" = '2' ] ; then
         #判断有没有 当前脚本名_exec.sh 这个脚本(安装后实际执行的脚本名)
         if [ -f ~/bin/${shell_name}_exec.sh ] ; then 
